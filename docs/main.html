@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>main.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>main.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <h3><span id="python-script-to-download-attachments-from-mail-automatically" href="python-script-to-download-attachments-from-mail-automatically">Python Script to Download Attachments From Mail Automatically </span></h3>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Import the required packages (* mandatory input fields)</p>
+<ol>
+<li><strong>imaplib</strong></li>
+<li><strong>base64</strong></li>
+<li><strong>os</strong></li>
+<li><strong>email</strong></li>
+<li><strong>argparse</strong></li>
+</ol>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="kn">import</span> <span class="nn">imaplib</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">email</span>
+<span class="kn">import</span> <span class="nn">argparse</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <h4><span id="note:" href="note:"> Note: </span></h4>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <ol>
+<li><strong>-d</strong>       - Path To Downloaded File *</li>
+<li><strong>-m</strong>       - User MailId *</li>
+<li><strong>-p</strong>       - Mail Password *</li>
+<li><strong>-f</strong>       - File Name </li>
+<li><strong>-imap</strong>    - Imap Server Name *</li>
+<li><strong>-port</strong>    - Imap Server Port *</li>
+</ol>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <h4><span id="main-function" href="main-function"> main function </span></h4>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Provide MailId and Password from which need to login</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">email_user</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">mail_id</span>
+
+    <span class="n">email_passwd</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">password</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>Imap Server and Port</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">mail</span> <span class="o">=</span> <span class="n">imaplib</span><span class="o">.</span><span class="n">IMAP4_SSL</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">imap_server</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">imap_port</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>login with user details</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">mail</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">email_user</span><span class="p">,</span> <span class="n">email_passwd</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>Select the Folder Name.</p>
+<p>For example I  used <strong>Indox</strong> here.</p>
+<p>The parameter  <strong>readonly</strong> is optional if it is assign to  <strong>True</strong> it make the <strong>unread</strong> unread else <strong>read</strong>.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">mail</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;Inbox&quot;</span><span class="p">,</span> <span class="n">readonly</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      <p>Search for particular <strong>Subject</strong> and <strong>From Id</strong> in the mail list .</p>
+<p><strong>Unseen</strong> is an optional Keyword if we provide it  will also search in  <strong><em>unseen</em></strong> mail list.</p>
+<p>Here , I searched for <strong>From Id</strong> - Rupesh with <strong>subject</strong>  - SQL.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="nb">type</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">mail</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+        <span class="bp">None</span><span class="p">,</span> <span class="s1">&#39;(FROM &quot;Rupesh&quot; SUBJECT &quot;SQL&quot;)&#39;</span><span class="p">,</span> <span class="s1">&#39;UnSeen&#39;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>Reverse the mail list from latest to older .</p>
+<p>Incase you need all mail remove break statement.</p>
+<p>Fetch Mail details for last sent mail only</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">typ</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">mail</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="s1">&#39;(RFC822)&#39;</span><span class="p">)</span>
+        <span class="n">raw_email</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">break</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      <p>Decode the Mail String to readable Data Format</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">raw_email_string</span> <span class="o">=</span> <span class="n">raw_email</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">email_message</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">message_from_string</span><span class="p">(</span><span class="n">raw_email_string</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>Download the file from mail</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">email_message</span><span class="o">.</span><span class="n">walk</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">part</span><span class="o">.</span><span class="n">get_content_maintype</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;multipart&#39;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">part</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Content-Disposition&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">continue</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>Get the filename as same as mail attachment (Change if u Needed)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>            <span class="n">fileName</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="n">get_filename</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>In case of renaming the file provide the fileName (in arguments).</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>            <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">filename</span><span class="p">:</span>
+                <span class="n">fileName</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">filename</span>
+            <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="n">fileName</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      <p>Specify the Download location Path</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>                <span class="n">filePath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">args</span><span class="o">.</span><span class="n">target_dir</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      <p>Save the file in Specified Location</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filePath</span><span class="p">):</span>
+                    <span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+                    <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">get_payload</span><span class="p">(</span><span class="n">decode</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+                    <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Download Attachments From Mail&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;--target_dir&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;path_to_save&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;--mail_id&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;mailId&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--password&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;mail password&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--filename&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;FileName for file&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-imap&#39;</span><span class="p">,</span><span class="s1">&#39;--imap_server&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;imap.gmail.com&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Imap Server Name&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-port&#39;</span><span class="p">,</span><span class="s1">&#39;--imap_port&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;993&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Imap Server Port&#39;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-17'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-17'>#</a>
+      </div>
+      <p>defined in <strong><em>line 29</em></strong> (top)</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
